@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Prep</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Smart Prep</h1>
+
+        <!-- Upload Section -->
+        <div class="upload-section">
+
+            <!-- Pretty Upload Box (Only One) -->
+            <div class="file-input-wrapper">
+                <label class="file-input-label" for="fileInput">
+                    📄 Click to upload PDF
+                </label>
+                <input type="file" id="fileInput" accept="application/pdf">
+            </div>
+
+            <!-- Extracted Text Display -->
+            <textarea id="documentText" 
+                placeholder="Extracted document text will appear here..." 
+                readonly></textarea>
+        </div>
+
+        <!-- Analysis Options -->
+        <div class="analysis-options">
+
+            <div class="option-group">
+                <label for="analysisType">Analysis Type:</label>
+                <select id="analysisType">
+                    <option value="summary">Generate Summary</option>
+                    <option value="questions">Create Questions</option>
+                    <option value="general">General Analysis</option>
+                </select>
+            </div>
+
+            <div class="option-group">
+                <label for="outputFormat">Output Format:</label>
+                <select id="outputFormat">
+                    <option value="points">Point-based</option>
+                    <option value="paragraph">Paragraph</option>
+                </select>
+            </div>
+
+            <div class="option-group">
+                <label for="pageRange">Page Range (optional):</label>
+                <input type="text" id="pageRange" placeholder="e.g., 1-5, 10-15">
+            </div>
+
+        </div>
+
+        <!-- Analyze Button -->
+        <button class="analyze-btn" onclick="analyzeDocument()">Analyze Document</button>
+
+        <!-- Loading Indicator -->
+        <p class="loading" id="loadingText">Analyzing... Please wait.</p>
+
+        <!-- Results Box -->
+        <div id="analysis" class="result-box" style="display: none;">
+            <div class="result-header">
+                <h3>Analysis Results</h3>
+
+                <div class="action-buttons">
+                    <button class="copy-btn" onclick="copyResults()">Copy</button>
+                    <button class="download-btn" onclick="downloadResults()">Download</button>
+                </div>
+            </div>
+
+            <div id="resultContent"></div>
+        </div>
+
+    </div>
+
+    <!-- Main Script -->
+    <script>
+        let currentAnalysis = null;
+
+        /* Handle file upload & send to backend */
+        document.getElementById("fileInput").addEventListener("change", async function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append("document", file);
+
+            try {
+                const response = await fetch("http://localhost:3000/upload", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+                document.getElementById("documentText").value =
+                    data.text || "Failed to extract text";
+
+            } catch (err) {
+                console.error("Extraction error:", err);
+                document.getElementById("documentText").value =
+                    "Error extracting text";
+            }
+        });
+
+        /* Analyze document */
+        async function analyzeDocument() {
+            const documentText = document.getElementById('documentText').value;
+            const analysisType = document.getElementById('analysisType').value;
+            const outputFormat = document.getElementById('outputFormat').value;
+            const pageRange = document.getElementById('pageRange').value;
+
+            const loadingText = document.getElementById('loadingText');
+            const resultBox = document.getElementById('analysis');
+            const resultContent = document.getElementById('resultContent');
+
+            if (!documentText.trim()) {
+                alert("Please upload a document first.");
+                return;
+            }
+
+            loadingText.style.display = "block";
+            resultContent.innerHTML = "";
+            resultBox.style.display = "block";
+
+            try {
+                const response = await fetch("http://localhost:3000/analyze", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        documentText,
+                        analysisType,
+                        outputFormat,
+                        pageRange
+                    })
+                });
+
+                const data = await response.json();
+                loadingText.style.display = "none";
+                currentAnalysis = data;
+
+                if (data.error) {
+                    resultContent.innerHTML =
+                        `<p class="error-message">${data.error}</p>`;
+                    return;
+                }
+
+                displayResults(data.analysis, analysisType);
+
+            } catch (err) {
+                loadingText.style.display = "none";
+                resultContent.innerHTML =
+                    "<p class='error-message'>Failed to analyze the document.</p>";
+            }
+        }
+
+        /* Format results */
+        function displayResults(analysis, type) {
+            const resultContent = document.getElementById("resultContent");
+
+            if (type === "questions" && analysis.short_answer_questions) {
+                let html = `<div class="questions-section">`;
+
+                if (analysis.short_answer_questions.length) {
+                    html += `<h4>Short Answer Questions:</h4><ul>`;
+                    analysis.short_answer_questions.forEach(q => {
+                        html += `<li>${q}</li>`;
+                    });
+                    html += `</ul>`;
+                }
+
+                if (analysis.long_answer_questions.length) {
+                    html += `<h4>Long Answer Questions:</h4><ul>`;
+                    analysis.long_answer_questions.forEach(q => {
+                        html += `<li>${q}</li>`;
+                    });
+                    html += `</ul>`;
+                }
+
+                html += `</div>`;
+                resultContent.innerHTML = html;
+
+            } else {
+                const content = analysis.summary || analysis.content || "No output available";
+                resultContent.innerHTML =
+                    `<div class="content-section">${content.replace(/\n/g, "<br>")}</div>`;
+            }
+        }
+
+        /* Copy Results */
+        function copyResults() {
+            const text = document.getElementById("resultContent").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Results copied!");
+            });
+        }
+
+        /* Download Results */
+        function downloadResults() {
+            const text = document.getElementById("resultContent").innerText;
+            const blob = new Blob([text], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "document-analysis.txt";
+            a.click();
+
+            URL.revokeObjectURL(url);
+        }
+    </script>
+
+</body>
+</html>

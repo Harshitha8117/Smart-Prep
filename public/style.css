@@ -1,0 +1,385 @@
+/* style.css - MERGED (Palette B) */
+
+/* -----------------------------------
+   GOOGLE FONT (Inter)
+----------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ------------------------------
+   GLOBAL VARIABLES (Palette B)
+------------------------------ */
+:root{
+  /* Colors */
+  --primary: #6A5AF9;
+  --primary-light: #836BFF;
+  --accent: #8F7BFF;
+  --soft-bg: #F7F5FF;
+  --bg-gradient-start: #6A5AF9;
+  --bg-gradient-mid: #836BFF;
+  --bg-gradient-end: #8F7BFF;
+
+  --text-dark: #1A1A1A;
+  --text-medium: #555555;
+  --border-light: #E0E0E0;
+  --white: #ffffff;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Spacing (8px grid) */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+
+  /* Shadows */
+  --shadow-card: 0 20px 40px rgba(0,0,0,0.15);
+  --shadow-soft: inset 0 0 10px rgba(0,0,0,0.05);
+  --shadow-pop: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* ------------------------------
+   RESET & BASE TYPOGRAPHY
+------------------------------ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height:1.6;
+  color:var(--text-dark);
+  min-height:100vh;
+  padding:var(--space-6) 0;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ------------------------------
+   MAIN CARD CONTAINER
+------------------------------ */
+.container{
+  width: 60%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* header */
+h1{
+  text-align:center;
+  font-size:42px;
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:var(--space-5);
+  line-height:1;
+}
+
+/* ------------------------------
+   UPLOAD SECTION
+------------------------------ */
+.upload-section{
+  padding: 0 var(--space-5) var(--space-4);
+}
+
+/* unified file input (supports both #fileInput and .file-input-wrapper) */
+.file-input-wrapper{position:relative;overflow:hidden;display:block;width:100%}
+.file-input-wrapper input[type=file]{position:absolute;left:0;top:0;opacity:0;cursor:pointer;height:100%;width:100%}
+
+.file-input-label,
+#fileInput{
+  display:block;
+  width:100%;
+  padding:15px;
+  border:2px dashed var(--primary);
+  border-radius:10px;
+  background:var(--soft-bg);
+  color:var(--primary);
+  text-align:center;
+  font-weight:600;
+  cursor:pointer;
+  transition: all .25s ease;
+  margin-bottom:var(--space-3);
+}
+
+.file-input-label i{margin-right:8px}
+
+.file-input-label:hover,
+#fileInput:hover{
+  background:#ece8ff;
+  border-color:var(--primary-light);
+}
+
+/* textarea / extracted content */
+#documentText,
+textarea{
+  width:100%;
+  height: 200px;
+  padding:15px;
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-md);
+  font-size:15px;
+  background:#fafafa;
+  resize:vertical;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  margin-bottom:var(--space-4);
+  font-family: 'Courier New', monospace;
+}
+
+#documentText:focus,
+textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 6px rgba(106,90,249,0.18);
+}
+
+/* ------------------------------
+   ANALYSIS OPTIONS PANEL
+------------------------------ */
+.analysis-options{
+  background:var(--soft-bg);
+  padding:24px var(--space-5);
+  margin: var(--space-4) 0;
+  border-radius:10px;
+  border-left:4px solid var(--primary);
+}
+
+.option-group{margin-bottom:var(--space-4)}
+.option-group:last-child{margin-bottom:0}
+
+.option-group label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--text-dark);
+  font-size:14px;
+}
+
+select, input[type="text"]{
+  width:100%;
+  padding:12px 15px;
+  border:1px solid var(--border-light);
+  border-radius:8px;
+  font-size:14px;
+  transition: all .2s ease;
+  background:var(--white);
+}
+
+select:focus, input[type="text"]:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 6px rgba(106,90,249,0.06);
+}
+
+/* ------------------------------
+   ACTION BUTTONS
+------------------------------ */
+button{cursor:pointer;border:none}
+
+.analyze-btn,
+button.analyze-btn{
+  width:100%;
+  padding: var(--space-3);
+  font-size:18px;
+  font-weight:600;
+  border-radius:var(--radius-md);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color:var(--white);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin: var(--space-2) 0;
+}
+
+.analyze-btn:hover{
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-pop);
+}
+
+.analyze-btn:active{transform:none}
+button:disabled{background:#ccc;cursor:not-allowed;box-shadow:none;transform:none}
+
+/* Small utility for inline action buttons */
+.btn {
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
+}
+
+/* ------------------------------
+   LOADING INDICATOR
+------------------------------ */
+.loading{
+  text-align:center;
+  padding:20px;
+  font-weight:600;
+  color:var(--primary);
+  display:none;
+}
+.loading::after{
+  content:'';
+  display:inline-block;
+  width:20px;height:20px;
+  border:2px solid var(--primary);
+  border-top:2px solid transparent;
+  border-radius:50%;
+  margin-left:10px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+/* ------------------------------
+   RESULTS / OUTPUT
+------------------------------ */
+.result-box{
+  margin: 0 var(--space-5) var(--space-5);
+  background: var(--white);
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  overflow:hidden;
+}
+
+.result-header{
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color:var(--white);
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.result-header h3{margin:0;font-size:1.25rem}
+.action-buttons{display:flex;gap:10px}
+
+.copy-btn, .download-btn{
+  background: rgba(255,255,255,0.18);
+  color: var(--white);
+  border:1px solid rgba(255,255,255,0.22);
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+}
+.copy-btn:hover, .download-btn:hover{
+  background: rgba(255,255,255,0.28);
+  transform:none;
+  box-shadow:none;
+}
+
+#resultContent{
+  padding:25px;
+  max-height:500px;
+  overflow-y:auto;
+  background: linear-gradient(180deg, rgba(247,245,255,0.8), rgba(255,255,255,1));
+}
+
+/* scrollbar styling */
+#resultContent::-webkit-scrollbar{width:8px}
+#resultContent::-webkit-scrollbar-track{background:#f1f1f1;border-radius:4px}
+#resultContent::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+#resultContent::-webkit-scrollbar-thumb:hover{background:var(--primary-light)}
+
+/* ------------------------------
+   CONTENT & QUESTIONS LIST
+------------------------------ */
+.questions-section h4{
+  color:var(--text-dark);
+  margin-bottom:15px;
+  font-size:1.1rem;
+  border-bottom:2px solid var(--primary);
+  padding-bottom:6px;
+}
+
+.questions-section ul{list-style:none;margin-bottom:24px;padding:0}
+.questions-section li{
+  background:var(--soft-bg);
+  margin-bottom:10px;
+  padding:15px;
+  border-radius:8px;
+  border-left:4px solid var(--primary);
+  transition: transform .18s ease, background .18s ease;
+}
+.questions-section li:hover{transform:translateX(6px);background:#ece8ff}
+
+/* content */
+.content-section{line-height:1.8;color:var(--text-dark)}
+.content-section h4{color:var(--primary);margin-bottom:15px}
+.content-section p{margin-bottom:15px}
+
+/* ------------------------------
+   SUCCESS / ERROR MESSAGES
+------------------------------ */
+.success-message{
+  background:#dff3ff;
+  color:#0b4f9a;
+  border:1px solid #cfeeff;
+  padding:12px;border-radius:8px;margin:12px 0;
+}
+.error-message{
+  background:#fff0f4;
+  color:#7a1524;
+  border:1px solid #ffd6df;
+  padding:12px;border-radius:8px;margin:12px 0;
+}
+
+/* ------------------------------
+   ANIMATIONS
+------------------------------ */
+@keyframes fadeIn {
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+#resultContent > *{animation:fadeIn .45s ease-out}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 1100px){
+  .container{width:86%;padding:var(--space-5)}
+  #documentText, textarea{height:180px}
+}
+
+@media (max-width: 768px){
+  body{padding:var(--space-3)}
+  .container{width:92%;border-radius:12px;padding:20px}
+  h1{font-size:2rem;margin:var(--space-3) 0}
+  .upload-section, .analysis-options{padding:16px}
+  .result-box{margin:0 12px 20px}
+  .result-header{flex-direction:column;gap:12px;text-align:center}
+  .action-buttons{width:100%;justify-content:center}
+  .analyze-btn{font-size:16px;padding:14px}
+  button{margin:10px 0}
+}
+
+@media (max-width:480px){
+  h1{font-size:1.8rem}
+  #documentText, textarea{height:150px}
+  select,input[type="text"],.file-input-label{padding:12px}
+  .result-header h3{font-size:1.1rem}
+  .copy-btn,.download-btn{padding:6px 10px;font-size:12px}
+}
+
+/* ------------------------------
+   LEGACY / BACKWARD COMPATIBILITY
+   (keeps any original selectors the markup may use)
+------------------------------ */
+.upload-box{ /* in case markup uses .upload-box */
+  border:2px dashed var(--primary);
+  padding:var(--space-4);
+  border-radius:var(--radius-md);
+  background:var(--soft-bg);
+  margin-bottom:var(--space-4);
+  transition:.25s ease;
+}
+.upload-box:hover{background:#ece8ff;border-color:var(--primary-light)}
+textarea.upload-area{height:220px}
+ 
+
