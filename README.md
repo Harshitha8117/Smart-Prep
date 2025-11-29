@@ -1,180 +1,80 @@
-# **Smart-Prep — AI-Powered Study Summarizer & Test Generator**
+````markdown
+# Smart-Prep
 
-Transform long PDFs and DOCX files into **concise summaries** and **exam-ready questions** instantly.
+## 🚀 What is Smart-Prep
 
----
+Smart-Prep is a web application designed to help users streamline and simplify their preparation workflows — whether for study plans, project tasks, or daily routines. It offers a clean UI, intuitive navigation, and efficient organization tools to help users stay on top of their tasks.
 
-## 🚀 **Overview**
+## 🔧 Features
 
-Smart-Prep is an AI-driven document-processing platform that turns dense study materials into **point-based or paragraph summaries**, **short-answer questions**, and **long-answer questions** with a single click.
-Upload your academic PDFs/DOCs → pick options → get instant, structured learning outputs.
+- User-friendly interface for planning and tracking tasks  
+- Support for grouping tasks/plans (projects, modules, routines)  
+- Responsive design to work across devices (desktop, mobile)  
+- Built using modern frontend technologies for speed and maintainability  
 
-Built for **students, educators, and professionals**, the system automates laborious tasks like note-making, revision prep, and question creation.
-(Reference: project documentation )
+## 📦 Tech Stack
 
----
+- Frontend: **React**, **TypeScript**  
+- Styling: **Tailwind CSS**  
+- Build tool / bundler: **Vite**  
+- (Add any backend / database / API details if applicable)  
 
-## ✨ **Key Features**
+## 🛠️ Getting Started
 
-* 📄 **Upload PDF/DOC/DOCX**
-* 🔍 **Page Range Selection** (e.g., 1–3, 5)
-* 🧠 **AI/NLP-Based Summarization**
+### Prerequisites
 
-  * Point-based
-  * Paragraph-based
-* 📝 **Automated Question Generation**
+- Node.js (v16 or later recommended)  
+- npm or yarn  
 
-  * Short-answer
-  * Long-answer
-  * Both
-* ⚙️ **Configurable Question Counts**
-* 💾 **Export & Copy Output**
-* ⚡ **Fast, lightweight text extraction pipeline**
-
-(Reference: detailed module breakdown )
-
----
-
-## 🛠️ **Tech Stack**
-
-### **Frontend**
-
-* React + TypeScript
-* TailwindCSS
-* ShadCN/UI
-* Lucide Icons
-
-### **Backend**
-
-* Supabase Edge Functions
-* Node.js + Express (for file parsing logic)
-* PDF-Parse & Mammoth.js for extraction 
-
-### **AI/NLP**
-
-* Summarization & question generation powered by LLM-based edge functions.
-
----
-
-## 🧩 **System Architecture (High Level)**
-
-1. **Upload Module** → Secure file handling via Multer
-2. **Text Extraction Module** → PDF-Parse / Mammoth.js
-3. **Page Range Processor** → Extracts only requested sections
-4. **NLP Engine** → Summaries + Question Generation
-5. **Results Module** → UI rendering + export options
-
-(Architecture described in project report )
-
----
-
-## 📂 **Project Structure**
-
-```
-/src
-  /components
-    FileUpload.tsx
-    ProcessingOptions.tsx
-    ResultsDisplay.tsx
-  /pages
-    Index.tsx
-    NotFound.tsx
-  /integrations
-    /supabase
-      client.ts
-      types.ts
-  App.tsx
-  main.tsx
-  index.css
-```
-
----
-
-## ▶️ **Running the App Locally**
-
-### **Prerequisites**
-
-* Node.js 18+
-* Supabase project (+ Functions enabled)
-
-### **Steps**
+### Installation
 
 ```bash
-git clone https://github.com/Harshitha8117/generated
-cd generated
+git clone https://github.com/Harshitha8117/Smart-Prep.git
+cd Smart-Prep
 npm install
+npm run dev   # or yarn dev
+````
+
+### Running Locally
+
+After installation, run:
+
+```bash
 npm run dev
 ```
 
-Set environment variables:
+Open your browser at `http://localhost:3000` (or the port Vite serves) to access Smart-Prep.
+
+## 💡 Usage
+
+Once the app is running:
+
+* Create a new plan/project or routine
+* Add tasks or items to the plan
+* Mark tasks as done, track progress
+* Organize and manage multiple plans as per your needs
+
+*(You can walk through the UI to get a feel for planning, editing, and tracking tasks.)*
+
+## 🙏 Contributing
+
+Contributions are welcome — whether it’s fixing bugs, improving UI/UX, or adding new features.
+Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/YourFeatureName`)
+3. Make your changes and commit (`git commit -m "Add some feature"`)
+4. Push to your branch (`git push origin feature/YourFeatureName`)
+5. Open a Pull Request — describe what you’ve done and why
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 📬 Contact / Author
+
+Created by Harshitha8117. Feel free to open issues, raise feature requests or drop suggestions.
 
 ```
-VITE_SUPABASE_URL=
-VITE_SUPABASE_PUBLISHABLE_KEY=
-```
-
-To run Supabase functions:
-
-```bash
-supabase functions serve
-```
-
----
-
-## 🎯 **How It Works (Flow)**
-
-1. User uploads file
-2. Client extracts text (simplified decoding + cleaning)
-3. Text is truncated safely (memory-optimized)
-4. Sent to Supabase function:
-
-   * summaryType
-   * questionType
-   * questionCounts
-   * pageRange
-5. LLM processes and returns structured:
-
-   * summary
-   * questions
-6. UI displays clean results with copy/export options
-
----
-
-## 📸 **Screenshots**
-
-Refer to the project documentation for full screenshot gallery.
-(See Appendix B in the report for UI captures )
-
----
-
-## 📌 **Future Enhancements**
-
-* Multilingual summarization & Q-generation
-* Advanced transformer-based summarizer
-* Mobile-optimized UI
-* PDF/Word export
-* Collaborative real-time editing
-* Highlighting + search inside document
-
-(From the project's “Future Enhancements” section )
-
----
-
-## 👩‍💻 **Team**
-
-* Abinayashree J
-* Charulatha K
-* Harshitha K
-
-Guided by:
-Mr. Malarmannan A, M.E.
-(As listed in official documents )
-
----
-
-## 📜 **Academic References**
-
-Full reference list included in project report (pages 51–52) .
 
 
-Just tell me the style you want!
