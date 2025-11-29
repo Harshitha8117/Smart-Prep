@@ -96,5 +96,4 @@ See the `LICENSE` file for details.
 For questions, suggestions, or improvements:
 **Harshitha8117** — Feel free to open an issue on the repository.
 
-```
 
