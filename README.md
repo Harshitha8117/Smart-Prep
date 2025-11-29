@@ -98,5 +98,3 @@ For questions, suggestions, or improvements:
 
 ```
 
-If you'd like, I can generate an **even more polished version** with badges (CI/CD, license, tech stack), a **visual banner**, or a **screenshots section** to elevate the project for recruiters and contributors.
-```
