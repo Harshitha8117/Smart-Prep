@@ -1,30 +1,33 @@
-````markdown
+
 # Smart-Prep
 
-## 🚀 What is Smart-Prep
+Smart-Prep is a streamlined preparation and task-management application built to help users plan, organize, and track their work with clarity and efficiency. Designed with a focus on simplicity, responsiveness, and modern UI practices, it supports everything from study planning to daily workflow organization.
 
-Smart-Prep is a web application designed to help users streamline and simplify their preparation workflows — whether for study plans, project tasks, or daily routines. It offers a clean UI, intuitive navigation, and efficient organization tools to help users stay on top of their tasks.
+---
 
-## 🔧 Features
+## ✨ Key Features
 
-- User-friendly interface for planning and tracking tasks  
-- Support for grouping tasks/plans (projects, modules, routines)  
-- Responsive design to work across devices (desktop, mobile)  
-- Built using modern frontend technologies for speed and maintainability  
+- **Structured Planning:** Create and manage plans, modules, tasks, and routines.  
+- **Clean, Minimal UI:** Thoughtfully designed interface for distraction-free productivity.  
+- **Responsive Experience:** Optimized across desktop and mobile devices.  
+- **Fast & Scalable Architecture:** Built on modern frontend tools for maintainability and performance.
 
-## 📦 Tech Stack
+---
 
-- Frontend: **React**, **TypeScript**  
-- Styling: **Tailwind CSS**  
-- Build tool / bundler: **Vite**  
-- (Add any backend / database / API details if applicable)  
+## 🛠️ Technology Stack
 
-## 🛠️ Getting Started
+- **React** (core UI framework)  
+- **TypeScript** (type-safe, scalable development)  
+- **Tailwind CSS** (utility-first, responsive styling)  
+- **Vite** (lightning-fast build tooling)
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-
-- Node.js (v16 or later recommended)  
-- npm or yarn  
+- **Node.js** (v16+ recommended)  
+- **npm** or **yarn**
 
 ### Installation
 
@@ -32,49 +35,68 @@ Smart-Prep is a web application designed to help users streamline and simplify t
 git clone https://github.com/Harshitha8117/Smart-Prep.git
 cd Smart-Prep
 npm install
-npm run dev   # or yarn dev
 ````
 
-### Running Locally
-
-After installation, run:
+### Local Development
 
 ```bash
 npm run dev
 ```
 
-Open your browser at `http://localhost:3000` (or the port Vite serves) to access Smart-Prep.
+Access the app at the URL provided by Vite (typically `http://localhost:5173`).
 
-## 💡 Usage
+---
 
-Once the app is running:
+## 📐 Project Structure
 
-* Create a new plan/project or routine
-* Add tasks or items to the plan
-* Mark tasks as done, track progress
-* Organize and manage multiple plans as per your needs
+```
+Smart-Prep/
+├─ src/
+│  ├─ components/
+│  ├─ pages/
+│  ├─ assets/
+│  ├─ styles/
+│  └─ main.tsx
+├─ public/
+├─ package.json
+└─ vite.config.ts
+```
 
-*(You can walk through the UI to get a feel for planning, editing, and tracking tasks.)*
+---
 
-## 🙏 Contributing
+## 💡 Usage Overview
 
-Contributions are welcome — whether it’s fixing bugs, improving UI/UX, or adding new features.
-Please follow these steps:
+* Create a plan or module.
+* Add relevant tasks or preparation items.
+* Update task status and track progress.
+* Manage multiple plans seamlessly through a clean, structured dashboard.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome and encouraged.
 
 1. Fork the repository
-2. Create a new branch (`git checkout -b feature/YourFeatureName`)
-3. Make your changes and commit (`git commit -m "Add some feature"`)
-4. Push to your branch (`git push origin feature/YourFeatureName`)
-5. Open a Pull Request — describe what you’ve done and why
+2. Create a feature branch
+3. Commit your updates
+4. Submit a Pull Request with a clear description
 
-## 📝 License
+---
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## 📄 License
 
-## 📬 Contact / Author
+This project is released under the **MIT License**.
+See the `LICENSE` file for details.
 
-Created by Harshitha8117. Feel free to open issues, raise feature requests or drop suggestions.
+---
+
+## 📬 Contact
+
+For questions, suggestions, or improvements:
+**Harshitha8117** — Feel free to open an issue on the repository.
 
 ```
 
-
+If you'd like, I can generate an **even more polished version** with badges (CI/CD, license, tech stack), a **visual banner**, or a **screenshots section** to elevate the project for recruiters and contributors.
+```
