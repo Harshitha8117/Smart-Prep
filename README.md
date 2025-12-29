@@ -1,7 +1,7 @@
 
 # Smart-Prep
 
-Smart-Prep is a streamlined preparation and task-management application built to help users plan, organize, and track their work with clarity and efficiency. Designed with a focus on simplicity, responsiveness, and modern UI practices, it supports everything from study planning to daily workflow organization.
+Smart-Prep is a  preparation and task-management application built to help users plan, organize, and track their work with clarity and efficiency. Designed with a focus on simplicity, responsiveness, and modern UI practices, it supports everything from study planning to daily workflow organization.
 
 ---
 
